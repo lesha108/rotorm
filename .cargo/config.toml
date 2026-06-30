@@ -1,0 +1,21 @@
+[target.thumbv7em-none-eabihf]
+runner = 'probe-rs run --chip STM32F411CEUx'
+rustflags = ["-C", "link-arg=-Tlink.x"]
+
+[build]
+target = "thumbv7em-none-eabihf"
+
+[profile.dev]
+panic = "abort"
+debug = true
+opt-level = "s"  # Optimize for size
+
+[profile.release]
+panic = "abort"
+debug = true
+lto = true
+opt-level = "s"  # Optimize for size
+
+[env]
+DEFMT_LOG = "info"
+

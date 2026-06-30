@@ -1,0 +1,49 @@
+[package]
+edition = "2024"
+name = "rotorm"
+version = "0.1.0"
+
+[dependencies]
+embassy-stm32 = { version = "0.6.0", path = "../embassy/embassy-stm32", features = ["defmt", "stm32f411ce", "unstable-pac", "memory-x", "time-driver-tim4", "exti", "chrono"] }
+embassy-sync = { version = "0.8.0", path = "../embassy/embassy-sync", features = ["defmt"] }
+embassy-executor = { version = "0.10.0", path = "../embassy/embassy-executor", features = ["platform-cortex-m", "executor-thread", "executor-interrupt", "defmt"] }
+embassy-time = { version = "0.5.1", path = "../embassy/embassy-time", features = ["defmt", "defmt-timestamp-uptime", "tick-hz-32_768"] }
+embassy-usb = { version = "0.6.0", path = "../embassy/embassy-usb", features = ["defmt" ] }
+embassy-net = { version = "0.9.0", path = "../embassy/embassy-net", features = ["defmt", "tcp", "dhcpv4", "medium-ethernet", ] }
+embassy-net-wiznet = { version = "0.3.0", path = "../embassy/embassy-net-wiznet", features = ["defmt"] }
+embassy-futures = { version = "0.1.2", path = "../embassy/embassy-futures" }
+
+defmt = "1.0.1"
+defmt-rtt = "1.0.0"
+
+cortex-m = { version = "0.7.6", features = ["inline-asm", "critical-section-single-core"] }
+cortex-m-rt = "0.7.0"
+embedded-hal = "0.2.6"
+embedded-hal-bus = { version = "0.2", features = ["async"] }
+embedded-io = { version = "0.7.1" }
+embedded-io-async = { version = "0.7.0" }
+panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+futures-util = { version = "0.3.30", default-features = false }
+heapless = { version = "0.9", default-features = false }
+critical-section = "1.1"
+nb = "1.0.0"
+embedded-storage = "0.3.1"
+micromath = "2.0.0"
+usbd-hid = "0.10.0"
+static_cell = "2"
+chrono = { version = "^0.4", default-features = false}
+embedded-graphics = "0.8.2"
+#embedded-graphics-core = "0.4.1"
+#ssd1331-async = "0.1.0"
+bitflags = "2.11.0"
+sky-ili9341 = { version = "0.1.1", features = ["async", "graphics"] }
+crc = "3.4.0"
+oorandom = "11.1.5"
+
+[profile.release]
+debug = 2
+
+[package.metadata.embassy]
+build = [
+  { target = "thumbv7em-none-eabihf" }
+]

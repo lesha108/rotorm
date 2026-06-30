@@ -1,0 +1,1 @@
+cargo size --bin rotorm --release -- -A
